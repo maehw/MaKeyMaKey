@@ -39,7 +39,7 @@
 ////////////////////////
 
 #define BUFFER_LENGTH    3     // 3 bytes gives us 24 samples
-#define NUM_INPUTS       18    // 6 on the front + 12 on the back
+#define NUM_INPUTS       14    // 6 on the front + 12 on the back (do not use last 4 due to hardware issues)
 //#define TARGET_LOOP_TIME 694   // (1/60 seconds) / 24 samples = 694 microseconds per sample 
 //#define TARGET_LOOP_TIME 758  // (1/55 seconds) / 24 samples = 758 microseconds per sample 
 #define TARGET_LOOP_TIME 744  // (1/56 seconds) / 24 samples = 744 microseconds per sample 
@@ -94,7 +94,7 @@ int mouseHoldCount[NUM_INPUTS]; // used to store mouse movement hold data
 int pinNumbers[NUM_INPUTS] = {
   12, 8, 13, 15, 7, 6,     // top of makey makey board
   5, 4, 3, 2, 1, 0,        // left side of female header, KEBYBOARD
-  23, 22, 21, 20, 19, 18   // right side of female header, MOUSE
+  23, 22   // right side of female header, MOUSE
 };
 
 // input status LED pin numbers
