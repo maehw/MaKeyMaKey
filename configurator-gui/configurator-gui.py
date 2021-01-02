@@ -1,8 +1,9 @@
 import sys
 import tkinter as tk
+import subprocess
 
 root = tk.Tk()
-root.title("MaKey MaKey key configurator")
+root.title("MaKey MaKey key configurator/programmer")
 
 labels = [
     "up arrow pad",
@@ -165,6 +166,10 @@ def generate():
         
     binfile = open("eeprom.bin", "wb")
     binfile.write(ba)
+    prgButton.configure(state = "normal")
+
+def program():
+    subprocess.run(["avrdude", "-c", "ehajo-isp", "-p", "m32u4", "-C", "/usr/local/etc/avrdude.conf", "-U", "eeprom:w:eeprom.bin:r"])
     sys.exit(0)
 
 # create list of StringVars for the dropdowns
@@ -184,7 +189,9 @@ for l in labels:
     r = r + 1
 
 # add button to generate the binary
-tk.Button(root, text="Generate binary", command=generate, bg="#0055cc", fg="#ffffff").grid(row=len(labels), column=1, padx=5, pady=10)
+genButton = tk.Button(root, text="Generate binary", command=generate, bg="#0055cc", fg="#ffffff").grid(row=len(labels), column=0, padx=5, pady=10)
+prgButton = tk.Button(root, text="Program binary", command=program, bg="#0055cc", fg="#ffffff", state="disabled")
+prgButton.grid(row=len(labels), column=1, padx=5, pady=10)
 
 tk.mainloop()
 
