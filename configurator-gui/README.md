@@ -72,6 +72,8 @@ $ sudo avrdude -c ehajo-isp -p m32u4 -C /usr/local/etc/avrdude.conf -U eeprom:w:
 
 Disconnect the programmer, power cycle and you are done!
 
+You can now also use the "program" button out of the GUI, but you may then need to run the python script with higher privileged rights.
+
 
 
 ## Dependencies
@@ -79,6 +81,7 @@ Disconnect the programmer, power cycle and you are done!
 * modified firmware (see one directory level up of this repository)
 * python3
 * standard GUI package tkinter (python3-tk)
+* avrdude (if you want to use the programming feature)
 
 ## References
 
